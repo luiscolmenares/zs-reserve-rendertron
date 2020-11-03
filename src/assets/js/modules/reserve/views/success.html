@@ -1,0 +1,135 @@
+<style type="text/css">
+    .navbar{
+        margin-bottom: 0px !important;
+    }
+    .content{
+        padding: 0 !important;
+    }
+
+</style>
+<!-- Sticky NavBar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" data-ui-sref="home({token: vendor.token})">{{vendor.name}}</a>
+    <!--       <img alt="Brand" style="max-height: 20px;" src="{{vendor.logo}}">
+    -->    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a data-ui-sref="home({token: vendor.token})">Home </a></li>
+                    <!-- <li><a href="#">About Us</a></li> -->
+                    <li class="active"><a data-ui-sref="reserve({token: vendor.token})">Reserve a field or space<span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pickup Games <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a data-ui-sref="pickups({token: vendor.token})">Join a Pickup Game</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a data-ui-sref="list({token: vendor.token})">Subscribe to our Pickup List</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+<!-- Sticky NavBar -->
+<!-- Page Content -->
+<div class="mb-xs-0 mb-sm-0 content block" id="main-block" style="margin-bottom: 0px">
+    <main role="main" class="container-fluid block-content block-content-full pb-0">
+        <!-- Logo -->
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 block-header block-header-default" style="border-bottom: 2px solid #000000;">
+                    <span class=" h3 block-title text-black"><i class="fa fa-futbol-o" style="padding-right: 15px"></i> Reservation Succesful!</span>
+            </div>
+            <div class="col-sm-6 animated fadeIn text-center" style="padding: 10px" >
+                 <img class="img-fluid" style="max-width: 100%;  height: auto; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="{{reservation.logogenurl}}" srcset="{{reservation.logogenurl}}" alt="{{vendor.name}}">
+            </div>
+        <!-- End Logo -->
+        <!-- Row -->
+            <div class="col-sm-6 col-md-6">
+                <div>
+                    <div class="col-sm-12">
+                                <!-- Actions -->
+                                <div class="push-0-t clearfix">
+                                    <div class="btn-toolbar pull-right">
+                                        
+                                        <div class="btn-group dropdown">
+                                            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"  href="javascript:void(0)"><i class="fa fa-share-alt"></i> Share</a>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li>
+                                                    <a tabindex="-1" target="_blank" href="{{reservation.whatsapplink}}"><i class="fa fa-fw fa-whatsapp pull-right"></i> <span style="font-size: 12px !important;">Whatsapp</span></a>
+                                                </li>
+                                                <li>
+                                                    <a tabindex="-1" target="_blank" href="{{reservation.googlelink}}"><i class="fa fa-calendar-plus-o pull-right"></i><span style="font-size: 12px !important;"> Add to Google Calendar</span></a>
+                                                </li>
+                                                <li>
+                                                    <a tabindex="-1" target="_blank" href="{{reservation.icslink}}"><i class="fa fa-calendar-o pull-right"></i><span style="font-size: 12px !important;">Download to Calendar</span></a>
+                                                </li>
+                                                <li>
+                                                    <a tabindex="-1" target="_blank" href="{{reservation.emaillink}}"><i class="fa fa-fw fa-envelope pull-right"></i><span style="font-size: 12px !important;"> Email</span></a>
+                                                </li>
+                                                <li>
+                                                    <a tabindex="-1" href="#" onclick="window.print()"><i class="fa fa-fw fa-print pull-right"></i><span style="font-size: 12px !important;"> Print</span></a>
+                                                </li>
+                                               
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END Actions -->
+                                
+                            </div>
+                    
+                    
+                    <div class="block-content block-content-full">
+                        <!-- Map Markers Map -->
+                        <div class="row justify-content-center">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="block">
+                                    <!-- Markers Map Container -->
+                                    <div id="js-map-markers" style="height: 150px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Map Markers Map -->
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                   <span class="h4 text-bold text-black" ng-bind="reservation.vendor.name"></span><br>
+                                   <a href="https://www.google.com/maps/search/?api=1&{{coordinates}}"><i class="fa fa-map-marker">&nbsp;<span class="h6 text-bold text-black" ng-bind="reservation.vendor.address_1"></span> <span class="h5 text-bold text-black" ng-bind="reservation.vendor.address_2"></span> <span class="h6 text-bold text-black" ng-bind="reservation.vendor.city"></span></i><br>
+                                   <a href="tel:{{reservation.vendor.phone}}"><i class="fa fa-phone">&nbsp;<span class="h6 text-bold text-black" ng-bind="reservation.vendor.phone"></span></i></a><br>
+                                   <span class="h5 text-bold text-black" ng-bind="reservation.vendorspace.name"></span><br>
+                                   
+
+                                   <span class="h6 text-bold text-black" ng-bind="reservation.reservation_date"></span><br><span ng-repeat="hour in reservation.hours_reserved" class="h5 text-bold text-black" ng-bind="hour "></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <br><a href="#!/reserve/{{reservation.vendor.token}}" class="btn btn-sm btn-success" style="background-color: #0fe2d8">Create another reservation</a>
+                            </div>
+                            
+                           
+                        </div>
+                       
+                                
+                    </div>
+                    <!-- END Select Space -->
+                </div>
+            </div>                  
+        </div>
+        <!-- End Row -->
+    </main>
+    <!-- End Main Container -->   
+</div>
+<!-- END Page Content -->

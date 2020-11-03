@@ -1,0 +1,157 @@
+ <style type="text/css">
+    .navbar{
+        margin-bottom: 0px !important;
+    }
+    .content{
+        padding: 0 !important;
+    }
+
+</style>
+ <!-- Main Container -->
+<main id="main-container">
+    <!-- Sticky NavBar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" data-ui-sref="home({token: pickup.vendor.token})">{{pickup.vendor.name}}</a>
+    <!--       <img alt="Brand" style="max-height: 20px;" src="{{vendor.logo}}">
+    -->    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a data-ui-sref="home({token: pickup.vendor.token})">Home</a></li>
+                    <!-- <li><a href="#">About Us</a></li> -->
+                    <li><a data-ui-sref="reserve({token: pickup.vendor.token})">Reserve a field or space</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pickup Games <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="active"><a data-ui-sref="pickups({token: pickup.vendor.token})">Join a Pickup Game <span class="sr-only">(current)</span></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a data-ui-sref="list({token: pickup.vendor.token})">Join our Pickup List</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+<!-- Sticky NavBar -->
+    <!-- Page Content -->
+    <div class="content content-narrow">
+      
+        <div class="row">
+             <div class="col-sm-12">
+                
+                <div class="block block-rounded" id="main-block">
+                    <div class="bg-image" style="background-image: url({{pickup.image_1}});">
+                        <div class="block-content block-content-full bg-black-op ribbon ribbon-crystal">
+                            <div class="ribbon-box font-w600"><i class="fa fa-dollar"></i> {{pickup.price}}</div>
+                            <div class="text-center push-50-t push-50">
+                                <h3 class="text-white-op">{{pickup.name}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-content block-content-full clearfix">                                              	
+                        <!-- Progress Normal -->
+                         <div class="progress active">
+                            <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="{{pickup.capacity}}" style="width: {{pickup.progress_bar}}">{{pickup.spots_available}} SPOTS AVAILABLE</div>
+                        </div> 
+                        <!-- END Progress Normal -->
+                        <div>
+              
+                    	 	<button class="btn btn-success btn-block" id="btnSubmit" type="button"><i class="fa fa-ticket mr-1"></i> RESERVE SPOT</button>
+                    	 </div>
+                       
+                        <div class="block-content">
+                        	<p><span class="h3" style="font-style: bold;" ng-bind="pickup.vendor.name"></span>
+                        		<br>
+                        		<span class="h5" style="font-style: bold;" ng-bind="pickup.vendorspace.name"></span>
+                        		<br>
+                        		<span class="h5" style="font-style: bold;" ng-bind="pickup.fdate"></span>
+                        		<br>
+                        		<span class="h5" style="font-style: bold;" ng-bind="pickup.playtime"></span>
+                        		<br>
+                        		<span class="h5" style="font-style: bold;" ng-bind="pickup.spots"></span>
+
+                        	</p>
+                        	
+                        </div>
+
+                        <!-- Map Markers Map -->
+			           
+			                <div class="block block-rounded">
+			                    <!-- Markers Map Container -->
+			                    <div id="js-map-markers" style="height: 150px;box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></div>
+			                </div>
+			            
+			        <!-- END Map Markers Map -->
+                       
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <!-- END Page Content -->
+</main>
+<!-- END Main Container -->
+<!-- Top Modal -->
+<div class="modal fade" id="modal-top" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-top">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header"  style="background-color: #0fe2d8">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Terms &amp; Conditions</h3>
+                </div>
+                <div class="block-content">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            {{pickup.vendor.name}} shall not be liable for any damage whatsoever arising from any personal injury or property loss sustained by any participant with his/her family in or about any programs on the premises.
+                        </li>
+                        <li class="list-group-item">
+                            Participants and parents assume full responsibility for all injuries and damages which occur in or about any programs on the premises.
+                        </li>
+                        <li class="list-group-item">
+                            In addition, the participant agree(s) to follow the rules of conduct and play set by {{pickup.vendor.name}}.
+                        </li>
+                        <li class="list-group-item">
+                            The "Instant Booking Fee" is non-refundable
+                        </li>
+                        <li class="list-group-item">
+                            <label for="terms"><input type="checkbox" name="terms" id="terms" ng-model="terms" ng-change="termsChecked()"> I have read and accept the terms.</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label for="promo"><input type="checkbox" name="promo" id="promo"> I want to receive promotions and updates from {{pickup.vendor.name}} and ZonaSoccer.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-alert" type="button" data-dismiss="modal">Close</button>
+                <!-- <button class="btn btn-sm btn-success" type="submit" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button> -->
+                <!--  <button
+                          style="background-color:#013E93;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+                          id="checkout-button-price_0HCPHxPM4sTDdLh3UoNpCXlL"
+                          role="link"
+                          type="button"
+                        >
+                          Pay Now
+                        </button> -->
+                        <button class="btn btn-sm btn-success" id="checkout-button" style="background-color: #0fe2d8" disabled>Go Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Top Modal -->

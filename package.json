@@ -1,0 +1,27 @@
+{
+     "name": "Zonasoccer",
+     "version": "0.0.1",
+     "description": "ZonaSoccer Reservation Web app",
+     "dependencies": {
+          "express": "^4.17.1",
+          "fs-extra": "^9.0.1",
+          "puppeteer": "^5.4.1",
+          "puppeteer-core": "^5.4.1",
+          "rendertron-middleware": "^0.1.5"
+     },
+     "engine": "node >=0.6.x",
+     "scripts": {
+          "start": "node server.js"
+     },
+     "main": "server.js",
+     "repository": {
+          "type": "git",
+          "url": ""
+     },
+     "author": "Luis Colmenares",
+     "license": "Zonasoccer llc",
+     "bugs": {
+          "url": ""
+     },
+     "homepage": "/"
+}

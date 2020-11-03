@@ -1,0 +1,254 @@
+<style type="text/css">
+	.navbar{
+		margin-bottom: 0px !important;
+	}
+	.content, .space-selection{
+		padding: 0 !important;
+	}
+
+</style>
+<!-- Main Container -->
+<main id="main-container">
+	<!-- Sticky NavBar -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" data-ui-sref="home({token: vendor.token})">{{vendor.name}}</a>
+	<!--       <img alt="Brand" style="max-height: 20px;" src="{{vendor.logo}}">
+	-->    </div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a data-ui-sref="home({token: vendor.token})">Home</a></li>
+					<!-- <li><a href="#">About Us</a></li> -->
+					<li><a data-ui-sref="reserve({token: vendor.token})">Reserve a field or space</a></li>
+					<li class="dropdown">
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pickup Games <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a data-ui-sref="pickups({token: vendor.token})">Join a Pickup Game</a></li>
+							<li><a href="#"></a></li>
+							<li class="active"><a data-ui-sref="list({token: vendor.token})">Join our Pickup List  <span class="sr-only">(current)</span></a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+<!-- Sticky NavBar -->
+
+<!-- Page Content -->
+<div class="content content-narrow">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="block" id="main-block">
+				<div class="bg-image" style="background-image: url({{vendor.cover}});">
+					<div class="block-content block-content-full bg-black-op ribbon ribbon-crystal">
+						<div class="row">
+							<div class="hidden-xs col-sm-6 col-md-6 col-lg-6 text-center">
+								<img class="img-fluid img-rounded" style="max-width: 100%;  height: auto; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="{{vendor.logo}}" srcset="{{vendor.logo}}" alt="{{vendor.name}}">
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<div class="text-center push-50-t push-50">
+									<h2 class="text-white-op">{{vendor.name}}</h2>
+										<h5 class="text-white-op">{{vendor.address_1}}</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="block-content block-content-full clearfix">
+					<!-- Page Content -->
+					<div class="content" >
+						 <!-- Forms Row -->
+					    <div class="row">
+					        <div class="col-lg-10">
+					            <!-- Bootstrap Forms Validation -->
+					            
+					            <div class="block">
+					         
+					                <div>
+					                	<div class="block-header block-header-default" style="border-bottom: 2px solid #000000;">
+			                            <span class=" h3 block-title text-black"><i class="fa fa-futbol-o" style="padding-right: 15px"></i> Join our Pickup list</span>
+			                        </div>
+					                    <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/controllers.js -> FormsValidationCtrl Controller) -->
+					                    <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+					                    <form  action="#" method="POST" onsubmit="return false;" class="js-validation-player form-horizontal"  name="form"  role="form">
+					                    	 <!-- <form action="#" method="POST" onsubmit="return false;" role="form" data-toggle="validator"> -->
+					                    	 
+					                        <div class="form-group" style="padding-top: 10px !important">
+					                            <label class="col-md-4 control-label" for="val-name">Name <span class="text-danger">*</span></label>
+					                            <div class="col-md-7">
+					                                <input class="form-control" type="text" id="val-name" name="val-name" ng-model="name" placeholder="Enter your name...">
+					                            </div>
+					                        </div>
+					                        <div class="form-group">
+					                            <label class="col-md-4 control-label" for="val-email">Email <span class="text-danger">*</span></label>
+					                            <div class="col-md-7">
+					                                <input class="form-control" type="text" id="val-email" name="val-email" ng-model="email" placeholder="Enter valid email..">
+					                            </div>
+					                        </div>
+					                        <div class="form-group">
+					                            <label class="col-md-4 control-label" for="val-phoneus">Phone (US) </label>
+					                            <div class="col-md-7">
+					                                <input class="form-control" type="text" id="val-phoneus" name="val-phoneus"  ng-model="phone" placeholder="212-999-0000">
+					                            </div>
+					                        </div>
+					                        
+					                        <div class="form-group">
+					                            <label class="col-md-4 control-label" for="val-zipcode">Zipcode <span class="text-danger">*</span></label>
+					                            <div class="col-md-7">
+					                                <input class="form-control" type="text" id="val-zipcode" name="val-zipcode" placeholder="Enter your zipcode...">
+					                            </div>
+					                        </div>
+					                 
+					                        <div class="form-group">
+					                            <label class="col-md-4 control-label" for="val-date-of-birth">Date of birth </label>
+					                            <div class="col-md-7">
+					                                <input class="form-control" type="text" id="val-birthdate" name="val-birthdate"  placeholder="mm/dd/yy">
+					                             
+					                            </div>
+					                        </div>
+					                        
+					                        
+					                                   
+					                        <!-- Select2 (data-js-select2 attribute is initialized in js/directives.js) -->
+					                        <div class="form-group">
+					                            <label class="col-md-4 control-label" for="val-skill-level">Skill Level</label>
+					                            <div class="col-md-7">
+					                                <select class="form-control" id="val-skill-level" name="val-skill-level" style="width: 100%;">
+					                                    <option value="">Select Skill Level</option>
+					                                    <option value="Beginner">Beginner</option>
+					                                    <option value="Intermediate">Intermediate</option>
+					                                    <option value="Advance">Advance</option>                              
+					                                </select>
+					                            </div>
+					                        </div>
+					                        
+					                        <div class="form-group">
+					                            <label class="col-md-4 control-label" for="val-preferred-position">Preferred position(s)</label>
+					                            <div class="col-md-7">
+					                                <label class="btn btn-sm btn-danger" style="margin-right: 10px !important; margin-bottom: 10px !important" ng-repeat="position in positions">
+					                              <input
+					                                type="checkbox"
+					                                name="selectedpositions[]"
+					                                value="{{position}}"
+					                                ng-checked="selection.indexOf(positions) > -1"
+					                                ng-click="toggleSelectionPositions(position)"
+					                              > {{position}} 
+					                            </label>
+					                            </div>
+					                        </div>
+
+					                        <div class="form-group">
+					                            <label class="col-md-4 control-label" for="val-preferred-playtime">Preferred play time</label>
+					                            <div class="col-md-7">
+					                                <label class="btn btn-sm btn-warning" style="margin-right: 10px !important; margin-bottom: 10px !important" ng-repeat="playtime in playtimes">
+					                              <input
+					                                type="checkbox"
+					                                name="selectedplaytimes[]"
+					                                value="{{playtime}}"
+					                                ng-checked="selection.indexOf(playtimes) > -1"
+					                                ng-click="toggleSelectionPlaytimes(playtime)"
+					                              > {{playtime}} 
+					                            </label>
+					                            </div>
+					                        </div>
+
+					                        <div class="form-group">
+					                            <label class="col-md-4 control-label" for="val-preferred-playtime"> Notifications Preferences</label>
+					                            <div class="col-md-7">
+                                                    <label class="btn btn-sm btn-info" style="margin-right: 10px !important; margin-bottom: 10px !important">
+                                                        <input type="checkbox" ng-model="checkboxSMS.value"
+                                                        ng-true-value="1" ng-false-value="0"> SMS
+                                                    </label>
+                                                    <label class="btn btn-sm btn-info" style="margin-right: 10px !important; margin-bottom: 10px !important">
+                                                      <input type="checkbox" ng-model="checkboxEmail.value"
+                                                        ng-true-value="1" ng-false-value="0"> Email
+                                                    </label>
+
+                                                </div>
+					                        </div>
+					                                                  
+					                        <div class="form-group">
+					                            <div class="col-md-12 text-center">
+					                                <button class="btn btn-success btn-block" id="btnSubmit" type="submit" ng-disabled=" (name||email||phone) ?  false : true"><i class=" fa fa-check-circle"></i> ADD ME TO THE PICKUP LIST</button>
+					                            </div>
+					                        </div>
+					                    </form>
+					                </div>
+					            </div>
+					            <!-- Bootstrap Forms Validation -->
+					        </div>
+					    </div>
+					   
+					</div>
+					<!-- END Page Content -->
+
+					
+					<div class="block container text-center">
+						<a ng-show="{{vendor.instagram !== null}}" href="{{vendor.instagram}}" target="_blank" style="text-decoration: none; color: #000000"><i class="fa fa-instagram fa-2x" style="padding: 10px;"></i></a>
+						<a ng-show="{{vendor.facebook !== null}}" href="{{vendor.facebook}}" target="_blank" style="text-decoration: none; color: #000000"><i class="fa fa-facebook-official fa-2x" style="padding: 10px;"></i></a>
+						<a ng-show="{{vendor.twitter !== null}}" href="{{vendor.twitter}}" target="_blank" style="text-decoration: none; color: #000000"><i class="fa fa-twitter-square fa-2x" style="padding: 10px;"></i></a>
+					</div>
+					<!-- End Social Media -->
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+		<!-- END Page Content -->
+</main>
+	<!-- END Main Container -->
+
+	<!-- Top Modal -->
+<div class="modal fade" id="modal-top" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-top">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header"  style="background-color: #0fe2d8">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Terms &amp; Conditions</h3>
+                </div>
+                <div class="block-content">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            {{vendor.name}} shall not be liable for any damage whatsoever arising from any personal injury or property loss sustained by any participant with his/her family in or about any programs on the premises.
+                        </li>
+                        <li class="list-group-item">
+                            Participants and parents assume full responsibility for all injuries and damages which occur in or about any programs on the premises.
+                        </li>
+                        <li class="list-group-item">
+                            In addition, the participant agree(s) to follow the rules of conduct and play set by {{vendor.name}}.
+                        </li>
+                        <li class="list-group-item">
+                            <label for="terms"><input type="checkbox" name="terms" id="terms" ng-model="terms" ng-change="termsChecked()"> I have read and accept the terms.</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label for="promo"><input type="checkbox" name="promo" id="promo"> I want to receive promotions and updates from {{vendor.name}} and ZonaSoccer.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-alert" type="button" data-dismiss="modal">Close</button>
+                        <button class="btn btn-sm btn-success" id="checkout-button" style="background-color: #0fe2d8" disabled>Join the list!</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Top Modal -->

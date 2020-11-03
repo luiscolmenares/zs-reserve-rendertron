@@ -1,0 +1,209 @@
+ <style type="text/css">
+    .navbar{
+        margin-bottom: 0px !important;
+    }
+    .content{
+        padding: 0 !important;
+    }
+
+</style>
+<!-- Sticky NavBar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" data-ui-sref="home({token: vendor.token})">{{vendor.name}}</a>
+    <!--       <img alt="Brand" style="max-height: 20px;" src="{{vendor.logo}}">
+    -->    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a data-ui-sref="home({token: vendor.token})">Home </a></li>
+                    <!-- <li><a href="#">About Us</a></li> -->
+                    <li class="active"><a data-ui-sref="reserve({token: vendor.token})">Reserve a field or space<span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pickup Games <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a data-ui-sref="pickups({token: vendor.token})">Join a Pickup Game</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a data-ui-sref="list({token: vendor.token})">Subscribe to our Pickup List</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+<!-- Sticky NavBar -->
+<!-- Page Content -->
+<div class="content block" id="main-block">
+    <main role="main" class="container-fluid block-content block-content-full">
+        <div class="row">
+            <!-- Logo -->
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="col-sm-6 animated fadeIn text-center">
+                    <img class="img-fluid img-rounded" style="max-width: 100%;  height: auto; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="{{vendor.logo}}" srcset="{{vendor.logo}}" alt="{{vendor.name}}">
+                     
+                </div>
+            
+            </div>
+            <!-- End Logo --> 
+
+      
+            <div class="col-sm-6" style="padding-top: 10px">
+                <p><span class="h4 text-bold" ng-bind="vendor.name"></span>
+                    <br>
+                    <span class="h5" ng-bind="vendor.address_1"></span> <span class="h5" ng-bind="vendor.address_2"></span> <span class="h5" ng-bind="vendor.city"></span>
+                    <br>
+                    <span class="h5" ng-bind="vendor.short_description"></span></p>
+                
+                <p><span ng-repeat="tags in vendor.tags" class="badge badge-pill badge-success" ng-bind="tags.name"></span></p>
+            </div>
+        <!-- End Simple Rating -->
+        <!-- Map Markers Map -->
+            <div class=" justify-content-center col-sm-12">
+                <div class="block">
+                    <!-- Markers Map Container -->
+                    <div id="js-map-markers" style="height: 150px;box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></div>
+                </div>
+            </div>
+        <!-- END Map Markers Map -->
+        <!-- Form -->
+            <div class="col-sm-12">
+                <form action="#" method="POST" onsubmit="return false;" role="form" data-toggle="validator">
+                     <!-- Select Space -->
+                    <div class="block">
+                        <div class="block-header block-header-default" style="border-bottom: 2px solid #000000;">
+                            <span class=" h3 block-title text-black"><i class="fa fa-futbol-o" style="padding-right: 15px"></i> Select Space</span>
+                        </div>
+                        <div class="block-content block-content-full">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <ul class="list-group">
+                                            <li class="list-group-item" ng-repeat="space in vendor.vendorspaces">
+                                                    <input class="form-check-input" type="radio" ng-model="$parent.name" name="name" value="{{space.name}}" id="{{space.name}}" required ng-change='newValue({{space.id}})' />
+                                                    <label class="form-check-label" for="{{space.name}}">{{space.name}}
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- END Select Space -->
+                    </div>
+                    <!-- Reservation Date and time -->
+                    <div class="block" ng-cloak>
+                        <div class="block-header block-header-default" style="border-bottom: 2px solid #000000;">
+                            <span class=" h3 block-title text-black"><i class="fa fa-futbol-o" style="padding-right: 15px"></i> Select Date</span>
+                        </div>
+                        <div class="block-content block-content-full">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        
+                                                <div id="datepicker-reserve"></div> 
+                                        </div>
+                                    </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-show="dateSelected">
+                                    <div class="form-group">
+                                        <div class="block-header block-header-default" style="border-bottom: 2px solid #000000;">
+                                            <span class=" h3 block-title text-black"><i class="fa fa-futbol-o" style="padding-right: 15px"></i> Select Time(s)</span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="block" id="my-block">
+                                                 <div class="block-content">
+                                                     <div ng-repeat="(hour,enabled) in hours">
+                                                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3"  style="padding: 5px">
+                                                            <label class="btn btn-success btn-md">
+                                                                 <input type="checkbox" ng-model="hours[hour]" ng-change="insertedHour(hours)"> {{hour}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>                                  
+                                </div>
+                            </div>
+                        </div>
+                    <!-- END Reservation Date and Time -->
+                    </div>
+                    <!-- Submit Form -->
+                    <div class="text-right push">
+                        <button class="btn btn-sm btn-success" id="btnSubmit" type="button" style="background-color: #0fe2d8" disabled><i class="fa fa-check mr-1"></i>Ok</button>
+                        <div id="error-message"></div>
+                    </div>
+                    <!-- END Submit Form -->
+                </form>
+            </div>
+        </div>
+        <!-- End Form -->
+    </main>
+    <!-- End Main Container -->   
+</div>
+<!-- END Page Content -->
+
+
+<!-- Top Modal -->
+<div class="modal fade" id="modal-top" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-top">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header"  style="background-color: #0fe2d8">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Terms &amp; Conditions</h3>
+                </div>
+                <div class="block-content">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            {{vendor.name}} shall not be liable for any damage whatsoever arising from any personal injury or property loss sustained by any participant with his/her family in or about any programs on the premises.
+                        </li>
+                        <li class="list-group-item">
+                            Participants and parents assume full responsibility for all injuries and damages which occur in or about any programs on the premises.
+                        </li>
+                        <li class="list-group-item">
+                            In addition, the participant agree(s) to follow the rules of conduct and play set by {{vendor.name}}.
+                        </li>
+                        <li class="list-group-item">
+                            The "Instant Booking Fee" is non-refundable
+                        </li>
+                        <li class="list-group-item">
+                            <label for="terms"><input type="checkbox" name="terms" id="terms" ng-model="terms" ng-change="termsChecked()"> I have read and accept the terms.</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label for="promo"><input type="checkbox" name="promo" id="promo"> I want to receive promotions and updates from {{vendor.name}} and ZonaSoccer.</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-alert" type="button" data-dismiss="modal">Close</button>
+                <!-- <button class="btn btn-sm btn-success" type="submit" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button> -->
+                <!--  <button
+                          style="background-color:#013E93;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+                          id="checkout-button-price_0HCPHxPM4sTDdLh3UoNpCXlL"
+                          role="link"
+                          type="button"
+                        >
+                          Pay Now
+                        </button> -->
+                        <button class="btn btn-sm btn-success" id="checkout-button" style="background-color: #0fe2d8" disabled>Go Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Top Modal -->
